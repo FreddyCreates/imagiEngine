@@ -1,0 +1,66 @@
+{
+  "entities": {
+    "GeneratedImage": {
+      "title": "GeneratedImage",
+      "description": "An AI generated image asset",
+      "type": "object",
+      "properties": {
+        "url": { "type": "string" },
+        "prompt": { "type": "string" },
+        "caption": { "type": "string" },
+        "style": { "type": "string" },
+        "aspectRatio": { "type": "string" },
+        "createdAt": { "type": "number" },
+        "userId": { "type": "string" },
+        "isRandom": { "type": "boolean" },
+        "learnedInsight": { "type": "string" },
+        "version": { "type": "number" }
+      }
+    },
+    "UserLibraryItem": {
+      "title": "UserLibraryItem",
+      "description": "An image explicitly saved into the user's persistent library collection",
+      "type": "object",
+      "properties": {
+        "imageId": { "type": "string" },
+        "userId": { "type": "string" },
+        "url": { "type": "string" },
+        "prompt": { "type": "string" },
+        "caption": { "type": "string" },
+        "style": { "type": "string" },
+        "aspectRatio": { "type": "string" },
+        "savedAt": { "type": "number" },
+        "createdAt": { "type": "number" },
+        "tags": { "type": "string" },
+        "notes": { "type": "string" }
+      }
+    },
+    "PortfolioCollection": {
+      "title": "PortfolioCollection",
+      "description": "A curated collection of generated assets",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "items": { "type": "array" },
+        "createdAt": { "type": "number" },
+        "userId": { "type": "string" }
+      }
+    }
+  },
+  "firestore": {
+    "/generated_images/{imageId}": {
+      "schema": { "$ref": "entities.GeneratedImage" },
+      "description": "Collection of all generated images"
+    },
+    "/user_library/{libraryItemId}": {
+      "schema": { "$ref": "entities.UserLibraryItem" },
+      "description": "User-specific persistent saved library collection"
+    },
+    "/portfolios/{portfolioId}": {
+      "schema": { "$ref": "entities.PortfolioCollection" },
+      "description": "User-specific portfolio collections"
+    }
+  }
+}
+
